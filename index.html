@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tristan Portfolio Website</title>
+    <link rel="stylesheet" href="./style.css"/>
+ </head>
+
+<body>
+    <div class="mouse-light"></div>
+    <h1 class="hi-text">Hi, I'm Tristan.</h1>
+
+    <!-- FIGURE OUT WHAT THIS IS -->
+    <canvas class="canvas"></canvas>
+
+    <!-- Content Section - Appears after animation -->
+    <section class="content-section">
+        <div class="left-side">
+            <div class="fixxed-text">
+                <h1 class="tristan-goehring"> Tristan Goehring </h1>
+                <h2 class="aspiring-product-manager"> Aspiring Product Manager </h2>
+                <div class="nav-bar">
+                    <p class="about" data-target="about"> About</p>
+                    <p class="experience" data-target="experience"> Experience</p>
+                    <p class="projects" data-target="projects"> Projects</p>
+                </div>
+                <div class="link-bar">
+                    <a href="https://www.linkedin.com/in/tristan-goehring/" target="_blank"><img class="linkedin" src="/Wesbsite Images/LinkedinLogo.png"></a>
+                    <a href="https://github.com/0Tristan0" target="_blank"><img class="github" src="/Wesbsite Images/github-logo.png"></a>
+                    <a href="mailto:tristangoehring@outlook.com"><img class="email" src="Wesbsite Images/Email.svg"></a>
+                    <!-- Make it so it downloads my Resume -->
+                    <a href="/Wesbsite Images/Resume.pdf" download><img class="resume" src="/Wesbsite Images/Resume.svg"></a>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="scrollable-text">
+                <div class="about-me-section" id="about">
+                    <h2 class="about-me-header"> About me. </h2>
+                    <p class="about-me-text"> Hi! I’m <strong>Tristan Goehring, a Computer Science major and BIS minor at Oregon State University (Class of 2028)</strong>. I’ve been passionate about computer science since high school and enjoy combining my technical and analytical skills to build creative, data-driven solutions. <br><br>I’m proficient in Java, Python, HTML, CSS, and JavaScript, and love applying these skills to personal projects—especially in finance and web development. Outside of class, I’m an active member of several tech-focused organizations on campus: </p>
+                    <ul class="about-me-text">
+                        <li class="about-me-list"> Computer Science major and Finance minor at Oregon State University, Class of 2028. </li>
+                        <li class="about-me-list"> Proficient in Java, Python, HTML, CSS, and JavaScript. </li>
+                        <li class="about-me-list"> Active member of several tech-focused organizations on campus: </li>
+                        <li class="about-me-list"> Deeply interested in product management and enjoy bridging the gap between technology and people, turning innovative ideas into meaningful user experiences. </li>
+                    </ul>
+                    <p class="about-me-text">I’m deeply interested in product management and enjoy bridging the gap between technology and people—turning innovative ideas into meaningful user experiences.</p>
+                    <div class="about-me-image-wrapper">
+                        <img class="about-me-image" src="/Wesbsite Images/Goehring_Tristan_Senior_Photo.png">
+                    </div>
+                </div>
+                <div class="experience-section" id="experience">
+
+                    <!-- Section Header -->
+                    <h2 class="experience-header">Experience.</h2>
+
+                    <!-- Experience Item — TA -->
+                    <div class="experience-item">
+                        <div class="experience-top">
+                            <h3 class="experience-title">Undergraduate Teaching Assistant — CS 162</h3>
+                            <p class="experience-date">August 2025 – Present</p>
+                        </div>
+
+                        <p class="experience-description">
+                            As an Undergraduate Teaching Assistant for CS 162: Introduction to Computer Science (Python) at Oregon State University, 
+                            I lead weekly labs of around 30 students, guiding them through core programming topics such as functions, loops, 
+                            data structures, and working with Python packages. I also hold office hours to help students debug code, strengthen
+                            their problem-solving skills, and build confidence in writing clean, efficient programs.
+                        </p>
+
+                        <div class="experience-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Teaching</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item — App Dev Club -->
+                    <div class="experience-item">
+                        <div class="experience-top">
+                            <h3 class="experience-title">Secretary — App Development Club</h3>
+                            <p class="experience-date">January 2025 – Present</p>
+                        </div>
+
+                        <p class="experience-description">
+                            As Secretary of the App Development Club, I help organize and coordinate weekly meetings, manage communications, 
+                            and support multiple student-led software projects. I facilitate brainstorming sessions that encourage collaboration 
+                            between developers, designers, and product-focused members, helping transform early concepts into functional prototypes. 
+                            Through this role, I’ve strengthened my leadership, organization, and teamwork skills while guiding members through the 
+                            app development process from idea to implementation.
+                        </p>
+
+                        <div class="experience-tags">
+                            <span class="tag">Product Management</span>
+                            <span class="tag">Organization</span>
+                            <span class="tag">Roadmapping</span>
+                            <span class="tag">Team Leadership</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item — STEAM Camp -->
+                    <div class="experience-item">
+                        <div class="experience-top">
+                            <h3 class="experience-title">Camp Leader — Summer of STEAM</h3>
+                            <p class="experience-date">August 2023</p>
+                        </div>
+
+                        <p class="experience-description">
+                            As a Camp Leader for the Summer of STEAM program, I designed and led Python-based STEM workshops for elementary students, 
+                            introducing them to programming through fun, interactive projects. I fostered curiosity and creativity by creating a 
+                            supportive environment where students could explore hands-on activities and develop early confidence in problem-solving 
+                            and computational thinking.
+                        </p>
+
+                        <div class="experience-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Teaching</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Mentorship</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="projects-section">
+                <h2 class="projects-header"> Projects. </h2>
+                <div class="projects-layout">
+                    <a>
+                        <div class="project">Corvo Cribs</div>
+                        <div class="button-gradient"></div>
+                    </a>
+                    
+                </div>
+            </div>
+        </div> 
+    </section>
+    
+
+    
+    <!-- This animates the individual frames -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- This animates based on scrolling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
