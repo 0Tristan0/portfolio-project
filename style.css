@@ -112,12 +112,12 @@ body.intro {
     transition: transform 0.2s ease-in-out; 
 }
 
-
-
 .about:hover, .experience:hover, .projects:hover {
     color: #55c762;
     cursor: pointer;
 }
+
+
 
 .link-bar{
     padding-top: 40%;
@@ -134,6 +134,8 @@ body.intro {
     border-radius: 5px;
     padding: 3px;
     filter: brightness(.5);
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
 }
 
 .github {
@@ -143,6 +145,8 @@ body.intro {
     border-radius: 5px;
     padding: 3px;
     filter: brightness(.5);
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
 }
 
 .email {
@@ -152,6 +156,8 @@ body.intro {
     border-radius: 5px;
     padding: 5px;
     filter: brightness(.5);
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
 }
 
 .resume {
@@ -161,11 +167,13 @@ body.intro {
     border-radius: 5px;
     padding: 3px;
     filter: brightness(.5);
-
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
 }
 
 .resume:hover, .email:hover, .github:hover, .linkedin:hover {
     filter: brightness(1.6);  /* 1 = normal, higher = brighter */
+    transform: rotateY(360deg);
 }
 
 .about-me-section {
@@ -314,31 +322,78 @@ body.intro {
 }
 
 .projects-layout {
-    display: flex;
-    flex: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    display: grid;
     margin-top: 4vh;
+    gap: 30px;
 }
 
-.project{
-    width: 30vw;
-    height: 30vh;
-
-    color: #dedede;
-    font-family: 'SfPro-Bold';
-    font-size: 20px;
-
-    border-radius: 2px;
-    padding: 0.75rem 1.5rem;
-    background-color: rgba(255,255,255,0.3);
+.project-card {
+    position: relative;
+    background: linear-gradient(173deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.10));
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 1);
+    overflow: hidden;
     backdrop-filter: blur(10px);
-    box-shadow: 1px 1px 2px #55c762;
+    border-radius: 16px;
+    padding: 30px 20px;
+    display: flex;
     cursor: pointer;
+
+}
+/* Gradient border with border-radius */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 3px; /* This is your border thickness */
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.7),
+        rgba(188, 188, 188, 0.85),
+        rgba(101, 84, 169, 0.2),
+        rgba(187, 187, 187, 0.5)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
 }
 
+.card-back {
+    transform: rotateY(180deg);
+}
 
+.project-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 25px;
+    box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.project-info {
+    margin: 10px 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.project-title {
+    font-family: 'SfPro-Bold', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #55c762;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    color: #dedede;
+    font-family: 'SfPro-Regular', sans-serif;
+    line-height: 150%;
+    font-size: 15px;
+}
 
 
 /* Each tag */
@@ -382,3 +437,8 @@ body.intro {
     );
     transition: background 0.08s ease-out;
 }
+
+
+
+
+

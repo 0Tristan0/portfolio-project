@@ -9,6 +9,7 @@
  </head>
 
 <body>
+    <script src="vanilla-tilt.js"></script>
     <div class="mouse-light"></div>
     <h1 class="hi-text">Hi, I'm Tristan.</h1>
 
@@ -124,14 +125,17 @@
                     </div>
                 </div>
             </div> 
-            <div class="projects-section">
-                <h2 class="projects-header"> Projects. </h2>
+            <div class="projects-section" id="projects">
+                <h2 class="projects-header"> Projects. </h2>    
                 <div class="projects-layout">
-                    <a>
-                        <div class="project">Corvo Cribs</div>
-                        <div class="button-gradient"></div>
-                    </a>
-                    
+                    <div class="project-card" data-tilt>
+                        <img class="project-img" src="/Wesbsite Images/Corvo-Cribs_logo.png" />
+                        <div class="project-info">
+                            <h3 class="project-title"> Corvo Cribs </h3>
+                            <p class="project-description"> A swipe-based housing app that helps Oregon State students find accurate, preference-matched listings using AI-powered verification. </p>
+                        </div>
+                    </div>
+                    <div class="card">
                 </div>
             </div>
         </div> 

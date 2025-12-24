@@ -1,6 +1,3 @@
-
-
-
 const canvas = document.querySelector(".canvas");
 const context = canvas.getContext("2d");
 const frameCount = 191;
@@ -101,24 +98,6 @@ window.addEventListener("mousemove", (e) => {
   light.style.setProperty("--y", `${e.clientY}px`);
 });
 
-// Horizontal scrolling for full-width project slides
-const projContainer = document.querySelector(".projects-horizontal-container");
-const totalWidth = projContainer.scrollWidth - window.innerWidth;
-
-gsap.to(".projects-horizontal-container", {
-  x: -totalWidth,
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".projects-section",
-    start: "top top",
-    end: () => "+=" + totalWidth,
-    scrub: true,
-    pin: true,
-    anticipatePin: 1,
-  },
-});
-
-
 const navItems = document.querySelectorAll(".nav-bar p");
 
 navItems.forEach(item => {
@@ -159,3 +138,18 @@ function setActive(id) {
     );
   });
 }
+
+// ============================================
+// VANILLA TILT INITIALIZATION
+// ============================================
+
+VanillaTilt.init(document.querySelectorAll(".project-card"), {
+  max: 15,              // Maximum tilt rotation (degrees)
+  speed: 400,           // Speed of the tilt animation
+  glare: true,          // Enable glare effect
+  "max-glare": 0.3,     // Maximum glare opacity
+  scale: 1.05,          // Scale up slightly on hover
+  perspective: 1000,    // Perspective for 3D effect
+  transition: true,     // Smooth transition
+  easing: "cubic-bezier(.03,.98,.52,.99)"
+});
