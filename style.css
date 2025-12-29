@@ -85,6 +85,33 @@ body.intro {
     align-self: stretch;
     }
 
+/* Cursor */
+.cursor{
+    position: relative;
+    height: auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 50px;
+    text-align: left;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: visible;
+   
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 3s steps(50) 1s 1 normal both, 
+    blinkingCursor 700ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 78%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+
 
 .aspiring-product-manager {
     color: #55c762;
@@ -116,7 +143,6 @@ body.intro {
     color: #55c762;
     cursor: pointer;
 }
-
 
 
 .link-bar{
@@ -437,8 +463,3 @@ body.intro {
     );
     transition: background 0.08s ease-out;
 }
-
-
-
-
-

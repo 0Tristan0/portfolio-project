@@ -153,3 +153,24 @@ VanillaTilt.init(document.querySelectorAll(".project-card"), {
   transition: true,     // Smooth transition
   easing: "cubic-bezier(.03,.98,.52,.99)"
 });
+
+// Wait for page to load
+document.addEventListener('DOMContentLoaded', function() {
+    const typewriterElement = document.querySelector('.cursor');
+    
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When element enters viewport
+            if (entry.isIntersecting) {
+                entry.target.classList.add('typewriter-animation');
+                observer.unobserve(entry.target); // Stop observing after animation starts
+            }
+        });
+    }, {
+        threshold: 0.2 // Trigger when 50% of element is visible
+    });
+    
+    // Start observing
+    observer.observe(typewriterElement);
+});
