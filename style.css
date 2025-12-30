@@ -83,35 +83,7 @@ body.intro {
     font-weight: 700;
     position: relative;
     align-self: stretch;
-    }
-
-/* Cursor */
-.cursor{
-    position: relative;
-    height: auto;
-    border-right: 2px solid rgba(255,255,255,.75);
-    font-size: 50px;
-    text-align: left;
-    white-space: nowrap;
-    overflow-x: hidden;
-    overflow-y: visible;
-   
 }
-/* Animation */
-.typewriter-animation {
-  animation: 
-    typewriter 3s steps(50) 1s 1 normal both, 
-    blinkingCursor 700ms steps(50) infinite normal;
-}
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 78%; }
-}
-@keyframes blinkingCursor{
-  from { border-right-color: rgba(255,255,255,.75); }
-  to { border-right-color: transparent; }
-}
-
 
 .aspiring-product-manager {
     color: #55c762;
@@ -126,24 +98,72 @@ body.intro {
 
 .nav-bar {
     padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 25px;
 }
 
 .about, .experience, .projects {
-    padding-top: 30%;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.5);
     text-align: left;
-    font-family: 'SfCompactRounded-Medium', sans-serif;
+    font-family: 'SfPro-Medium', sans-serif;
     font-size: 24px;
     font-weight: 500;
-    position: relative;
-    transition: transform 0.2s ease-in-out; 
-}
-
-.about:hover, .experience:hover, .projects:hover {
-    color: #55c762;
+    transition: color 0.3s ease;
     cursor: pointer;
 }
 
+.nav-bar-line {
+    width: 40px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+}
+
+.nav-item:hover .about,
+.nav-item:hover .experience,
+.nav-item:hover .projects,
+.about.active,
+.experience.active,
+.projects.active {
+    color: #ffffff;
+}
+
+.nav-item:hover .nav-bar-line,
+.about.active ~ .nav-bar-line,
+.experience.active ~ .nav-bar-line,
+.projects.active ~ .nav-bar-line {
+    width: 80px;
+    background-color: #55c762;
+}
+
+.nav-item:has(.about.active) .nav-bar-line,
+.nav-item:has(.experience.active) .nav-bar-line,
+.nav-item:has(.projects.active) .nav-bar-line {
+    width: 80px;
+    background-color: #55c762;
+}
+
+.nav-bar-line {
+    width: 40px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover .nav-bar-line {
+    background-color: #55c762;
+    width: 80px;
+}
 
 .link-bar{
     padding-top: 40%;
@@ -350,7 +370,7 @@ body.intro {
 .projects-layout {
     display: grid;
     margin-top: 4vh;
-    gap: 30px;
+    gap: 50px;
 }
 
 .project-card {

@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, {
-        threshold: 0.2 // Trigger when 50% of element is visible
+        threshold: 0.5 // Trigger when 50% of element is visible
     });
     
     // Start observing
