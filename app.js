@@ -8,7 +8,16 @@ function resizeCanvas() {
 }
 
 resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  resizeCanvas();
+
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 100);
+});
 
 const currentFrame = (index) =>
   `./Animation-Photos/${(index + 1).toString()}.jpg`;
@@ -38,28 +47,14 @@ gsap.fromTo(
   ".hi-text",
   { opacity: 1 },
   {
-    opacity: 1,
+    opacity: 0,
     scrollTrigger: {
       scrub: true,
       start: "0%",
-      end: "10%",
-    },
-    onComplete: () => {
-      gsap.to(".hi-text", { opacity: 0 });
+      end: "30%",
     },
   }
 );
-
-gsap.to(".navbar", {
-  backgroundColor: "#333",
-  duration: 1,
-  scrollTrigger: {
-    trigger: ".navbar",
-    start: "200%",
-    end: "50%",
-    scrub: true,
-  },
-});
 
 images[0].onload = render;
 
@@ -87,7 +82,6 @@ function render() {
   }
 
   context.clearRect(0, 0, cw, ch);
-
   context.drawImage(img, sx, sy, sw, sh, 0, 0, cw, ch);
 }
 
@@ -100,77 +94,93 @@ window.addEventListener("mousemove", (e) => {
 
 const navItems = document.querySelectorAll(".nav-bar p");
 
-navItems.forEach(item => {
+navItems.forEach((item) => {
   item.addEventListener("click", () => {
     const targetId = item.dataset.target;
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
 
-    const y =
-      targetEl.getBoundingClientRect().top +
-      window.pageYOffset -
-      40;
+    const y = targetEl.getBoundingClientRect().top + window.pageYOffset - 40;
 
     window.scrollTo({
       top: y,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   });
 });
 
 const sections = ["about", "experience", "projects"];
 
-sections.forEach(id => {
+sections.forEach((id) => {
   ScrollTrigger.create({
     trigger: `#${id}`,
     start: "top center",
     end: "bottom center",
     onEnter: () => setActive(id),
-    onEnterBack: () => setActive(id)
+    onEnterBack: () => setActive(id),
   });
 });
 
 function setActive(id) {
-  navItems.forEach(item => {
-    item.classList.toggle(
-      "active",
-      item.dataset.target === id
-    );
+  navItems.forEach((item) => {
+    item.classList.toggle("active", item.dataset.target === id);
   });
 }
 
-// ============================================
-// VANILLA TILT INITIALIZATION
-// ============================================
-
 VanillaTilt.init(document.querySelectorAll(".project-card"), {
-  max: 15,              // Maximum tilt rotation (degrees)
-  speed: 400,           // Speed of the tilt animation
-  glare: true,          // Enable glare effect
-  "max-glare": 0.3,     // Maximum glare opacity
-  scale: 1.05,          // Scale up slightly on hover
-  perspective: 1000,    // Perspective for 3D effect
-  transition: true,     // Smooth transition
-  easing: "cubic-bezier(.03,.98,.52,.99)"
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.3,
+  scale: 1.05,
+  perspective: 1000,
+  transition: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
 });
 
-// Wait for page to load
-document.addEventListener('DOMContentLoaded', function() {
-    const typewriterElement = document.querySelector('.cursor');
-    
-    // Create an Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // When element enters viewport
-            if (entry.isIntersecting) {
-                entry.target.classList.add('typewriter-animation');
-                observer.unobserve(entry.target); // Stop observing after animation starts
-            }
-        });
-    }, {
-        threshold: 0.5 // Trigger when 50% of element is visible
-    });
-    
-    // Start observing
-    observer.observe(typewriterElement);
-});
+
+let tiltEnabled = false;
+
+function shouldEnableTilt() {
+  return (
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(max-width: 900px)").matches
+  );
+}
+
+function enableTilt() {
+  if (tiltEnabled) return;
+  const cards = document.querySelectorAll(".project-card");
+  if (!cards.length) return;
+
+  VanillaTilt.init(cards, {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.3,
+    scale: 1.05,
+    perspective: 1000,
+    transition: true,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+  });
+
+  tiltEnabled = true;
+}
+
+function disableTilt() {
+  if (!tiltEnabled) return;
+
+  document.querySelectorAll(".project-card").forEach((card) => {
+    if (card.vanillaTilt) card.vanillaTilt.destroy();
+  });
+
+  tiltEnabled = false;
+}
+
+function updateTilt() {
+  shouldEnableTilt() ? enableTilt() : disableTilt();
+}
+
+updateTilt();
+window.addEventListener("resize", updateTilt, { passive: true });
+window.addEventListener("orientationchange", updateTilt);

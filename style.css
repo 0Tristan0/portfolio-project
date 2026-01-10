@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   overflow-x: hidden;
   overscroll-behavior-y: none;
@@ -20,17 +21,13 @@ body.intro {
 }
 
 .hi-text {
-  /* makes the elemnt fixxes when the page is scrolled */
   text-align: center;
   position: fixed;
-  /* determines a stacking order. The higher the number the more important */
   z-index: 2;
   color: white;
   font-size: 5rem;
-  /* Position */
   top: 20%;
   left: 50%;
-  /* Moves it 20% if its width to the left and 60% of its height upward */
   transform: translate(-50%, 50%);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -50,10 +47,12 @@ body.intro {
 .left-side {
   width: 45vw;
   height: 100vh;
+  min-height: 100vh;
   position: sticky;
   top: 0;
-
-  align-items: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .right-side {
@@ -68,17 +67,17 @@ body.intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-
-  margin-left: 20%;
-  margin-top: 15%;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20%;
 }
 
 .tristan-goehring {
   color: #ffffff;
   text-align: left;
   font-family: "SfPro-Bold", sans-serif;
-  font-size: 50px;
+  font-size: clamp(36px, 3.5vw, 50px);
   font-weight: 700;
   position: relative;
   align-self: stretch;
@@ -88,7 +87,7 @@ body.intro {
   color: #55c762;
   text-align: left;
   font-family: "SfPro-Bold", sans-serif;
-  font-size: 30px;
+  font-size: clamp(22px, 2vw, 30px);
   font-weight: 500;
   position: relative;
   padding-top: 15px;
@@ -115,7 +114,7 @@ body.intro {
   color: rgba(255, 255, 255, 0.5);
   text-align: left;
   font-family: "SfPro-Medium", sans-serif;
-  font-size: 24px;
+  font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 500;
   transition: color 0.3s ease;
   cursor: pointer;
@@ -125,7 +124,9 @@ body.intro {
   width: 40px;
   height: 2px;
   background-color: rgba(255, 255, 255, 0.3);
-  transition: all 0.4s ease;
+  border: none;
+  margin: 0;
+  transition: all 0.3s ease;
 }
 
 .nav-item:hover .about,
@@ -138,32 +139,11 @@ body.intro {
 }
 
 .nav-item:hover .nav-bar-line,
-.about.active ~ .nav-bar-line,
-.experience.active ~ .nav-bar-line,
-.projects.active ~ .nav-bar-line {
-  width: 80px;
-  background-color: #55c762;
-}
-
 .nav-item:has(.about.active) .nav-bar-line,
 .nav-item:has(.experience.active) .nav-bar-line,
 .nav-item:has(.projects.active) .nav-bar-line {
   width: 80px;
   background-color: #55c762;
-}
-
-.nav-bar-line {
-  width: 40px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: none;
-  margin: 0;
-  transition: all 0.3s ease;
-}
-
-.nav-item:hover .nav-bar-line {
-  background-color: #55c762;
-  width: 80px;
 }
 
 .link-bar {
@@ -174,55 +154,33 @@ body.intro {
   gap: 20px;
 }
 
-.linkedin {
+.linkedin,
+.github,
+.email,
+.resume {
   width: 40px;
   height: 40px;
   border: 0px solid #ffffff;
   border-radius: 5px;
   padding: 3px;
-  filter: brightness(0.5);
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
-}
-
-.github {
-  width: 40px;
-  height: 40px;
-  border: 0px solid #ffffff;
-  border-radius: 5px;
-  padding: 3px;
-  filter: brightness(0.5);
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
-}
-
-.email {
-  width: 40px;
-  height: 40px;
-  border: 0px solid #ffffff;
-  border-radius: 5px;
-  padding: 5px;
   filter: brightness(0.5);
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
 }
 
 .resume {
-  width: 40px;
   height: 37px;
-  border: 0px solid #ffffff;
-  border-radius: 5px;
-  padding: 3px;
-  filter: brightness(0.5);
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
+}
+
+.email {
+  padding: 5px;
 }
 
 .resume:hover,
 .email:hover,
 .github:hover,
 .linkedin:hover {
-  filter: brightness(1.6); /* 1 = normal, higher = brighter */
+  filter: brightness(1.6);
   transform: rotateY(360deg);
 }
 
@@ -234,25 +192,25 @@ body.intro {
   justify-content: center;
 }
 
-.about-me-text {
-  padding-top: 5%;
-  color: #dedede;
-  text-align: left;
-  font-family: "-", sans-serif;
-  font-size: 15px;
-  line-height: 119.47%;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-}
-
 .about-me-header,
 .experience-header,
 .projects-header {
   font-family: "SfPro-Bold", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: clamp(24px, 2vw, 30px);
   color: #55c762;
+}
+
+.about-me-text {
+  padding-top: 5%;
+  color: #dedede;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
 }
 
 .about-me-list {
@@ -264,7 +222,7 @@ body.intro {
 .about-me-image-wrapper {
   position: relative;
   width: 300px;
-  margin: 40px auto 0 auto; /* centers image block */
+  margin: 40px auto 0 auto;
 }
 
 .about-me-image {
@@ -286,7 +244,7 @@ body.intro {
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  background: rgba(85, 199, 98, 0.25); /* green glow */
+  background: rgba(85, 199, 98, 0.25);
   filter: blur(25px);
   opacity: 0;
   transition: opacity 0.35s ease;
@@ -294,11 +252,11 @@ body.intro {
 }
 
 .about-me-image-wrapper:hover .about-me-image {
-  transform: translate(-12px, -12px); 
+  transform: translate(-12px, -12px);
 }
 
 .about-me-image-wrapper:hover::before {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .experience-section {
@@ -307,10 +265,6 @@ body.intro {
 }
 
 .experience-header {
-  font-family: "SfPro-Bold", sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  color: #55c762;
   margin-bottom: 4vh;
 }
 
@@ -326,39 +280,53 @@ body.intro {
   align-items: flex-start;
 }
 
-/* Job Title */
 .experience-title {
   font-family: "SfPro-Bold", sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: #ffffff;
   max-width: 70%;
 }
 
-/* Date */
 .experience-date {
   font-family: "SfPro-Regular", sans-serif;
-  font-size: 14px;
+  font-size: clamp(12px, 1vw, 14px);
   color: #888;
   min-width: 140px;
   text-align: right;
 }
 
-/* Description text */
 .experience-description {
   margin-top: 1.5vh;
   color: #dedede;
   font-family: "SfPro-Regular", sans-serif;
   line-height: 150%;
-  font-size: 15px;
+  font-size: clamp(13px, 1.1vw, 15px);
 }
 
-/* Tags container */
 .experience-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 2vh;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #55c762;
+  font-family: "SfPro-Regular", sans-serif;
+  font-size: clamp(11px, 0.9vw, 13px);
+  letter-spacing: 0.3px;
+  user-select: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.tag:hover {
+  background-color: rgba(85, 199, 98, 0.1);
+  transform: translateY(-2px);
 }
 
 .projects-section {
@@ -368,8 +336,9 @@ body.intro {
 
 .projects-layout {
   display: grid;
+  grid-template-columns: 1fr;
   margin-top: 4vh;
-  gap: 50px;
+  gap: clamp(30px, 5vw, 50px);
 }
 
 .project-card {
@@ -383,17 +352,19 @@ body.intro {
   overflow: hidden;
   backdrop-filter: blur(10px);
   border-radius: 16px;
-  padding: 30px 20px;
+  padding: clamp(20px, 3vw, 30px);
   display: flex;
+  gap: clamp(15px, 2vw, 30px);
   cursor: pointer;
+  align-items: center;
 }
-/* Gradient border with border-radius */
+
 .project-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 16px;
-  padding: 3px; /* This is your border thickness */
+  padding: 3px;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.7),
@@ -409,16 +380,18 @@ body.intro {
 }
 
 .project-img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
+  width: clamp(120px, 15vw, 200px);
+  height: clamp(120px, 15vw, 200px);
+  object-fit: cover;
   border-radius: 25px;
   box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.4);
   transition: transform 0.35s ease, filter 0.35s ease;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .project-info {
-  margin: 10px 0 0 30px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -426,7 +399,7 @@ body.intro {
 
 .project-title {
   font-family: "SfPro-Bold", sans-serif;
-  font-size: 25px;
+  font-size: clamp(20px, 1.8vw, 25px);
   font-weight: 700;
   color: #55c762;
   margin-bottom: 10px;
@@ -436,7 +409,8 @@ body.intro {
   color: #dedede;
   font-family: "SfPro-Regular", sans-serif;
   line-height: 150%;
-  font-size: 15px;
+  font-size: clamp(13px, 1.1vw, 15px);
+  flex-grow: 1;
 }
 
 .project-skills {
@@ -449,38 +423,18 @@ body.intro {
 .project-skill-tag {
   background-color: rgba(158, 156, 156, 0.394);
   border: 1px solid rgba(255, 255, 255, 0.121);
-  padding: 6px 12px;
+  padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
   border-radius: 6px;
   color: #55c762;
   font-family: "SfPro-Regular", sans-serif;
-  font-size: 13px;
+  font-size: clamp(11px, 0.9vw, 13px);
   letter-spacing: 0.3px;
   transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Tag hover effect (subtle!) */
 .project-skill-tag:hover {
   background-color: rgba(85, 199, 98, 0.1);
-}
-
-/* Each tag */
-.tag {
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  border-radius: 6px;
-  color: #55c762;
-  font-family: "SfPro-Regular", sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-  user-select: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-/* Tag hover effect (subtle!) */
-.tag:hover {
-  background-color: rgba(85, 199, 98, 0.1);
-  transform: translateY(-2px);
 }
 
 .mouse-light {
@@ -490,11 +444,329 @@ body.intro {
   z-index: 1;
   background: radial-gradient(
     600px circle at var(--x) var(--y),
-    /* center: just slightly lighter than your dark grey */
-      rgba(74, 74, 74, 0.08),
-    /* fade: almost identical to background */ rgba(59, 59, 59, 0.08) 35%,
-
-    /* transparent outer edge */ rgba(24, 24, 24, 0) 70%
+    rgba(74, 74, 74, 0.08),
+    rgba(59, 59, 59, 0.08) 35%,
+    rgba(24, 24, 24, 0) 70%
   );
   transition: background 0.08s ease-out;
+}
+
+@media (max-width: 750px) {
+  .project-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-img {
+    width: clamp(150px, 35vw, 200px);
+    height: clamp(150px, 35vw, 200px);
+  }
+
+  .project-info {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .project-skills {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hi-text {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    white-space: nowrap;
+  }
+
+  .content-section {
+    flex-direction: column;
+  }
+
+  .left-side {
+    width: 100vw;
+    height: auto;
+    min-height: auto;
+    position: relative;
+    padding: 40px 30px 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .right-side {
+    width: 100vw;
+    padding: 15px 30px 80px 30px;
+  }
+
+  .fixxed-text {
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .tristan-goehring {
+    font-size: clamp(22px, 6vw, 32px);
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .aspiring-product-manager {
+    font-size: clamp(14px, 3.5vw, 18px);
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .nav-bar {
+    display: none;
+  }
+
+  .link-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    justify-content: space-evenly;
+    padding: 12px 40px;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+  }
+
+  .linkedin,
+  .github,
+  .email,
+  .resume {
+    width: 28px;
+    height: 28px;
+  }
+
+  .about-me-section {
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  .about-me-text {
+    text-align: left;
+  }
+
+  .about-me-list {
+    padding-left: 2em;
+  }
+
+  .about-me-header,
+  .experience-header,
+  .projects-header {
+    font-size: clamp(18px, 4.5vw, 20px);
+    margin-bottom: 12px;
+  }
+
+  .about-me-text {
+    font-size: clamp(12px, 3vw, 13px);
+    line-height: 160%;
+    padding-top: 3%;
+  }
+
+  .about-me-image-wrapper {
+    width: clamp(180px, 50vw, 240px);
+    margin: 30px auto 0 auto;
+  }
+
+  .experience-section {
+    margin-top: 5vh;
+  }
+
+  .experience-item {
+    margin-bottom: 4vh;
+    padding-bottom: 3vh;
+  }
+
+  .experience-top {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+
+  .experience-title {
+    max-width: 100%;
+    text-align: left;
+    font-size: clamp(14px, 3.8vw, 16px);
+    line-height: 135%;
+  }
+
+  .experience-date {
+    text-align: left;
+    font-size: clamp(10px, 2.6vw, 12px);
+  }
+
+  .experience-description {
+    font-size: clamp(12px, 3vw, 13px);
+    line-height: 160%;
+    margin-top: 10px;
+  }
+
+  .experience-tags {
+    margin-top: 12px;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: clamp(9px, 2.4vw, 11px);
+    padding: 4px 8px;
+  }
+
+  .projects-section {
+    margin-top: 5vh;
+  }
+
+  .projects-layout {
+    gap: clamp(25px, 4vw, 35px);
+  }
+
+  .project-card {
+    padding: clamp(18px, 3vw, 22px);
+    transform: none !important;
+  }
+
+  .project-title {
+    font-size: clamp(15px, 3.8vw, 18px);
+  }
+
+  .project-description {
+    font-size: clamp(12px, 3vw, 13px);
+  }
+
+  .project-skill-tag {
+    font-size: clamp(9px, 2.4vw, 11px);
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hi-text {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .left-side {
+    padding: 35px 25px 8px 25px;
+  }
+
+  .right-side {
+    padding: 12px 25px 75px 25px;
+  }
+
+  .tristan-goehring {
+    font-size: clamp(20px, 5.5vw, 28px);
+  }
+
+  .aspiring-product-manager {
+    font-size: clamp(13px, 3.2vw, 16px);
+  }
+
+  .link-bar {
+    padding: 10px 30px;
+  }
+
+  .linkedin,
+  .github,
+  .email,
+  .resume {
+    width: 26px;
+    height: 26px;
+  }
+
+  .about-me-header,
+  .experience-header,
+  .projects-header {
+    font-size: clamp(16px, 4vw, 18px);
+  }
+
+  .about-me-text,
+  .experience-description {
+    font-size: clamp(11px, 2.8vw, 12px);
+  }
+
+  .experience-title {
+    font-size: clamp(13px, 3.5vw, 15px);
+  }
+
+  .project-title {
+    font-size: clamp(14px, 3.6vw, 16px);
+  }
+
+  .project-description {
+    font-size: clamp(11px, 2.8vw, 12px);
+  }
+}
+
+@media (max-width: 400px) {
+  .hi-text {
+    font-size: 1.3rem;
+  }
+
+  .left-side {
+    padding: 30px 20px 5px 20px;
+  }
+
+  .right-side {
+    padding: 10px 20px 70px 20px;
+  }
+
+  .tristan-goehring {
+    font-size: 18px;
+  }
+
+  .aspiring-product-manager {
+    font-size: 12px;
+  }
+
+  .link-bar {
+    padding: 8px 25px;
+  }
+
+  .linkedin,
+  .github,
+  .email,
+  .resume {
+    width: 24px;
+    height: 24px;
+  }
+
+  .about-me-header,
+  .experience-header,
+  .projects-header {
+    font-size: 16px;
+  }
+
+  .about-me-text,
+  .experience-description {
+    font-size: 11px;
+  }
+
+  .experience-title {
+    font-size: 13px;
+  }
+
+  .project-title {
+    font-size: 14px;
+  }
+
+  .project-description {
+    font-size: 11px;
+  }
+
+  .project-card {
+    padding: 15px;
+  }
+
+  .tag,
+  .project-skill-tag {
+    font-size: 9px;
+  }
 }
